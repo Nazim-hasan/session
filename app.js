@@ -35,3 +35,10 @@ const addProductToCart=name=>{
     const cartStringified=JSON.stringify(cart);
     localStorage.setItem('cart',cartStringified);
 }
+const displayLocalStorageCart=()=>{
+    const cart=getCart();
+    for(const name in cart){
+        displayProduct(name);
+    }
+}
+displayLocalStorageCart();
