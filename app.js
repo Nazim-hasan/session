@@ -31,7 +31,12 @@ const getCart = () =>{
 
 const addProductToCart=name=>{
     const cart=getCart();
-    cart[name]=1;
+    if(cart[name]){
+        cart[name]=cart[name]+1;
+    }
+    else{
+        cart[name]=1;
+    }
     const cartStringified=JSON.stringify(cart);
     localStorage.setItem('cart',cartStringified);
 }
@@ -40,5 +45,9 @@ const displayLocalStorageCart=()=>{
     for(const name in cart){
         displayProduct(name);
     }
+}
+const placeOrder=()=>{
+    document.getElementById('items').textContent='';
+    localStorage.removeItem('cart');
 }
 displayLocalStorageCart();
